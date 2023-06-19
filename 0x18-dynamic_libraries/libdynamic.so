@@ -1,0 +1,4 @@
+gcc -c -fPIC _putchar.c
+gcc -c -fPIC _islower.c
+gcc -c -fPIC _isalpha.c
+gcc -shared -o libdynamic.so _putchar.o _islower.o _isalpha.o 
