@@ -1,0 +1,31 @@
+CC = gcc
+SRC = holberton.c main.c
+OBJ = $(SRC:%.c=%.o)
+NAME = holberton
+RM = rm -f
+
+# Compile .c files to .o files
+%.o: %.c m.h
+	$(CC) -c -o $@ $<
+
+# Default target: build the executable
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $@
+
+# Clean generated files
+clean:
+	$(RM) *~ $(NAME)
+
+# Clean object files
+oclean:
+	$(RM) $(OBJ)
+
+# Clean all generated files
+fclean: clean oclean
+
+# Clean object files and rebuild the executable
+re: oclean all
+
+.PHONY: all clean oclean fclean re

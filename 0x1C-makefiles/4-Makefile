@@ -1,0 +1,25 @@
+CC = gcc
+SRC = holberton.c main.c
+OBJ_DIR = obj
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
+NAME = holberton
+RM = rm -f
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+$(OBJ_DIR)/%.o: %.c m.h
+	$(CC) -c -o $@ $<
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@
+
+clean:
+	$(RM) *~ $(NAME)
+
+oclean:
+	$(RM) -r $(OBJ_DIR)
+
+fclean: clean oclean
+
+re: oclean all
